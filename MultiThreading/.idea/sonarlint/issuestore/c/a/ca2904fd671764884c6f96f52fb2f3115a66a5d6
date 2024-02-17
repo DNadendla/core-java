@@ -1,18 +1,0 @@
-
-k
-java:S3014	"IRemove this use of "ThreadGroup". Prefer the use of "ThreadPoolExecutor".(¦Àã“úÿÿÿÿ8ÅùÍ¸Ù1
-k
-java:S3014"IRemove this use of "ThreadGroup". Prefer the use of "ThreadPoolExecutor".(è¦Öºıÿÿÿÿ8ÆùÍ¸Ù1
-L	java:S106"+Replace this use of System.out by a logger.(ºÏÛÀüÿÿÿÿ8èùÍ¸Ù1
-G	java:S106"+Replace this use of System.out by a logger.(Ù÷ñÖ8éùÍ¸Ù1
-L	java:S106
-"+Replace this use of System.out by a logger.(Ë„­úÿÿÿÿ8ìùÍ¸Ù1
-G	java:S106"+Replace this use of System.out by a logger.(ï¼8íùÍ¸Ù1
-G	java:S106"+Replace this use of System.out by a logger.(û¿Üœ8öùÍ¸Ù1
-G	java:S106"+Replace this use of System.out by a logger.(»éÂ8÷ùÍ¸Ù1
-G	java:S106"+Replace this use of System.out by a logger.(âÁäİ8øùÍ¸Ù1
-L	java:S106$"+Replace this use of System.out by a logger.(³ş¸Šøÿÿÿÿ8ùùÍ¸Ù1
-L	java:S106%"+Replace this use of System.out by a logger.(£–î¯ıÿÿÿÿ8úùÍ¸Ù1
-G	java:S106&"+Replace this use of System.out by a logger.(œµİÇ8ûùÍ¸Ù1
-L	java:S106("+Replace this use of System.out by a logger.(İš‘²şÿÿÿÿ8üùÍ¸Ù1
-G	java:S106)"+Replace this use of System.out by a logger.(à§‹½8üùÍ¸Ù1
