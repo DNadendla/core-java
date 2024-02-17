@@ -2,4 +2,4 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-**/Java Practise/.idea
+**/Java Practise/MultiThreading/.idea
