@@ -1,0 +1,52 @@
+1) ThreadGroup -> Multiple Threads as a single Unit based on the functionality
+               -> Based on the Functionality we can Group Threads
+               -> Every thread belongs to a ThreadGroup
+               -> Every ThreadGroup is a child group of SystemGroup either directly or indirectly
+               -> System Group is the root for all ThreadGroups
+               System <- Main <- Child-Group1 -< Child-Group2 .....
+
+2) Lock (I) and ReentrantLock (C)
+               -> Lock object is similar to the implicit lock acquired by a thread to execute a synchronized method
+               or a synchronized block
+               -> methods:
+                    1) lock() -> locks lock obj. If it is already locked by a thread then it'll wait until it's unlocked
+                    2) tryLock() -> Returns TRUE if lock is available
+                                 Returns FALSE if lock is not available
+                    3) lockInterruptibly()
+                                -> If the lock is available, then Thread gets it
+                                -> If the lock is not available. then it waits, while waiting if it gets interrupted, then
+                                    it wont get the lock
+                    4) unlock() -> to release the lock
+
+                    To call these methods, Current thread should be owner of this lock. else we will get
+                    "IllegalMonitorStateException"
+
+                    ReentrantLock -> Means  Thread can acquire same lock multiple times
+                                  -> Increments counter whenever it acquires lock
+                                  -> Decrements counter whenever it releases lock
+                    Additional Methods: 8 most used methods
+
+3) Thread Pool => It is a pool of already created Threads that are ready to do our job
+        Need   => Creating a Thread manually everytime is not a good practise as it causes memory related issues
+        How to implement => using Executor Framework we can implement
+        ExecutorService service = ExecutorService.newFixedThreadPool(Threads_Count);
+        We can submit a Runnable Job(functionality to be handled by Thread) using submit()
+        We can shutdown ExecutorService by using shutdown()
+
+4) Callable & Future =>
+        => In the case of Runnable, Thread won't return any data
+        => If a Thread required to return a value after execution, then we should go for Callable(I)
+        Callable has call() that will return data
+
+        Runnable (I) --> run()  --> Returns nothing
+        Callable (I) --> call() --> returns Object
+
+5) ThreadLocal => This class provides Thread specific Local Variables
+               => Maintains values per Thread basis
+               => Each ThreadLocal object maintains a separate value like user-id, tx-id for each thread that accesses that object
+               => Thread can access, manipulate, remove it's value
+               => ThreadLocal data can be accessible across the code that is executable by that Thread
+
+
+
+

@@ -1,0 +1,99 @@
+1) Multi-tasking - Process based, Thread based
+2) Thread creation ways
+3) extending Thread class
+4) run() vs start()
+5) IllegalThreadStateException -> if we call thread.start() 2 times then this exception happens
+6) implementing Runnable interface
+7) Best approach to define a Thread -> Runnable, as we get option to extend another class
+8) Getting and setting name of a Thread
+    Thread.currentThread().getName()
+    getName()
+    setName()
+9) Thread Priorities, Default Thread priority and IllegalArgumentException
+10) Thread Execution prevention
+    yield() -> current executing thread pauses it's execution to give chance to other threads of same priority (OS issues)
+    join()  -> If a thread wants to wait until completion of some other thread, then it has to call join() on that thread
+                -> case-1 -> Main thread waiting case until Child Thread completion
+                -> case-2 -> Child thread wait case until Main Thread Completion
+                -> case-2 -> dead-lock -> If Main thread calls join() on Child Thread &
+                                             Child thread calls join() on Main Thread
+    sleep() -> To prevent Thread execution for a certain amount of time
+
+11) interrupt() -> If a thread A wants to interrupt a sleeping thread, then thread A has to call interrupt() on sleeping thread
+
+12) synchronized keyword -> Applicable to methods and blocks
+                         -> If the above are declared with synchronized kword then at a time only one thread is allowed
+                            to access that method
+                         -> Resolves Data inconsistency problem
+                         -> internally implemented using Lock concept
+                         -> If a Thread wants to execute any synchronized method of an object then it has to get the lock
+                            of that object first
+                         -> Synchronized area in an object     => Write Operations
+                         -> Non-Synchronized area in an object => Read Operations
+
+                         -> Object level lock -> instance synchronized methods
+                                                    => Multiple threads accessing an instance sync method of same object
+                         -> Class level lock  -> When a thread is accessing static synchronized method, then the remaining
+                                                 threads are not allowed to execute any static synchronized methods simultaneously
+                                                 remaining threads allowed to execute below simultaneously
+                                                 1) normal instance methods
+                                                 2) normal static methods
+                                                 3) synchronized instance methods
+
+                         -> Thread releases lock automatically once method execution is completed
+                         -> Synchronized block -> If very few lines of the code required synchronization then it's never
+                                                  recommended to declare entire method as synchronized we have to enclose those
+                                                  few lines of the code with in synchronized block.
+                                Object level lock -> synchronized(this) { code to be synchronized }
+                                Class  level lock -> synchronized(ClassName.class) { code to be synchronized }
+                                If we provide Object type/Class Type to synchronized block, we get Compile Time error saying
+                                    "Unexpected Type provided"
+                         -> Race condition: Multiple thread are operating on same object, then there my be a chance of
+                            data inconsistency problem. This is called Race condition. We can overcome this by using
+                            synchronized keyword.
+                         -> Object level lock?
+                            When a thread wants to execute a instance synchronized method, then object level lock required
+                         -> Class level lock?
+                            When a thread wants to execute a static synchronized method, then static level lock required
+                         -> Can a thread acquire multiple locks simultaneously?
+                            Yes, by defining nested synchronized block
+
+13) Inter-Thread Communication
+                        -> Two threads can communicate with each other by using wait(), notify(), notifyAll()
+                        -> Thread which expects updation is responsible to call wait(), then immediately this thread enters
+                            into waiting state
+                        -> Thread which is responsible to perform updation, after performing updation, it is responsible
+                            to call notify() then the waiting gets the notification and continues it's execution with those
+                            updated items
+                        Ex: Producer Thread -> Responsible to produce items and calls notify()
+                            Consumer Thread -> Responsible to consume items and calls wait() to enter waiting state until
+                                                it gets items notification from producer thread
+
+                        -> Why wait(), notify(), notifyAll() are in Object class but not in Thread class ?
+                            Thread can call wait(), notify(), notifyAll() on any Java object that's why
+                            they're required to be in Object class.
+                        -> start(), run(), join(), sleep() in Thread class?
+                            We can call then by using Thread object only.
+                        -> Thread should be owner of that object if it wants to call wait(),notify(), notifyAll()
+                        -> Thread having ownership of an object means it is having lock of that object
+                        -> It means Thread should be in synchronized area to call these methods.
+                        -> IllegalMonitorStateException: If we call wait(), notify(), notifyAll() outside the
+                            synchronized area, we'll get this IllegalMonitorStateException
+
+                        -> If a thread calls wait() on any object, immediately it releases the lock of that object and
+                           enters into waiting state.
+                        -> If a thread calls notify(),notifyAll() on any object, it releases the lock of that object
+                            but not immediately.
+                        -> Except wait(), notify(), notifyAll() cases, there is no other place/method where thread releases
+                            the lock
+
+14) Dead Lock:          -> If 2 threads are waiting for each other forever, such type of situation is called as Dead-Lock
+15) Starvation:         -> It is a situation where threads wait for a long-time but gets chance of execution (Implement using join())
+16) Daemon Thread:      -> Threads that are executing the background are called Daemon Threads Ex: GarbageCollector
+                        -> We can make a thread as daemon Thread only before starting it.
+                        -> If we make is Daemon after starting a Thread, then we'll get IllegalThreadStateException
+                        -> Once non-Daemon thread terminates, automatically all Daemon Thread gets terminated irrespective
+                            of their position
+17) Green Thread:       -> Threads which are managed completely by JVM without support from underlying OS support,
+                            are called as Green Threads
+

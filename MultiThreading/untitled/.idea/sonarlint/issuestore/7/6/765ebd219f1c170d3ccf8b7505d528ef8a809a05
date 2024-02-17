@@ -1,0 +1,7 @@
+
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ç–ø®Ú1
+{
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8¢—ø®Ú1
+S
+java:S3252"6Use static access with "java.lang.Thread" for "sleep".(Æš€°8¼ÆÆ–Û1
+G	java:S106"+Replace this use of System.out by a logger.(µâÚ¤8¢—ø®Ú1
