@@ -75,3 +75,9 @@ j
 :src/com/ex17/executor_service/case1_runnable/PrintJob.java,3\1\3118c47e1642c2c3c053c8371e58ff6bfa48ac50
 p
 @src/com/ex17/executor_service/case1_runnable/ThreadPoolDemo.java,6\2\629f1236696fe80463c3c92f9f3a37f10554766f
+x
+Hsrc/com/ex17/executor_service/case1_runnable/ThreadPoolRunnableDemo.java,c\b\cb7aaebfcd7538f479c12a69b49c51e351fcf17e
+m
+=src/com/ex17/executor_service/case2_callable/FetchSumJob.java,b\0\b0337f80a9f8edbab896b0a49feddab9895ccd32
+x
+Hsrc/com/ex17/executor_service/case2_callable/ThreadPoolCallableDemo.java,b\b\bb4bd70e3deefbeb32e7ee37993ee58fb6169a66
