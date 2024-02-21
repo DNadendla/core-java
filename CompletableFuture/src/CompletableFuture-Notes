@@ -1,0 +1,70 @@
+Parallel vs Asynchronous =>  both techniques used to improve the efficiency and responsiveness of applications
+Parallel/Concurrent     => Executing all tasks simultaneously and process once they all get complete
+                        => Called as blocking-operations
+Asynchronous            => Executing all tasks simultaneously and process the task instantly that is completed instead of
+                        waiting for the other tasks completion
+                        => Called as non-blocking operations
+
+          Streams                                         Reactive Streams
+1) Sequential vs Parallel                           1) Parallel vs Asynchronous
+
+Non-Blocking vs Blocking calls => Two different approaches to handling tasks in a program
+Non-Blocking => When we make a method call, we don't need to wait until the completion of method execution
+Blocking     => When we make a method call, we need to wait until the completion of method execution
+
+CompletableFuture => help to implement Non-Blocking functionality. (Like Promises in JS)
+Promises -> Two Channels -> Data channel and Error channel
+                         ->Error is also considered as another form of data
+
+Data Channel => ---function--------function-------------------function--------------function---
+                                    \                        /                                                            /
+                                 Error Occur          Found Alternative Solution
+                                     \                    /
+Error Channel => ------------------function--------------function-------------------------------
+
+Stages in CompletableFuture => It is just a pipeline of execution
+                            => Every stage takes a CompletableFuture and returns another CompletableFuture
+
+Supplier<T>      T get()         -> factories
+Predicate<T>     boolean test(T) -> filter
+Function<T,R>    R map(T)        -> map
+Consumer<T>      void accept(T)  -> forEach
+
+Stream vs CompletableFuture
+1) Zero, one or more data           1) Zero or One
+2) Only Data Channel                2) Data channel and  error channel
+3) forEach                          3) thenAccept
+4) map                              4) thenApply
+5) pipeline                         5) pipeline
+
+Methods of CompletableFuture
+1) get() -> to get the result from CompletableFuture, this is blocking call
+
+2) join() -> to get the result from CompletableFuture, this is non--blocking call
+
+3) thenAccept() ->  Similar to forEach()
+                    It is used when we don’t want to return anything from our callback function and
+                    only want to run some code once a Future completes.
+                    This method has access to the result of the CompletableFuture on which it is attached.
+                    Returns a CF of type Void
+
+4) thenApply() -> Similar to map(), processes/transforms a stage’s result.
+                    It accepts a Function functional interface that accepts an argument and returns a result wrapped in CF.
+
+5) thenRun()   -> Runnable job
+
+6) exceptionally() -> To handle Exceptions
+
+7) thenCombine() => to combine the result of two CompletableFutures once they complete their execution
+Ways to create CompletableFuture
+
+8) supplyAsync() => way to create and returns a some data in a CompletableFuture
+
+9) runAsync() => Way to create a CompletableFuture and returns Void(nothing) in a CompletableFuture
+
+10) new keyword
+        complete()
+        completeExceptionally()
+
+11) thenCompose() => Similar to flatMap(), It takes CompletableFuture as input and performs flattening operation and
+                     returns result in another CompletableFuture
