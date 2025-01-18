@@ -1,4 +1,4 @@
-package com.lambdas;
+package lambdas;
 
 import java.util.Map;
 
