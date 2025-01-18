@@ -1,0 +1,42 @@
+Concurrent Collections:
+ Problems with CC :
+            -> Traditional Collections(AL LL HS  TS) -> Not Thread-safe/Not Synchronized => Leads Data-Inconsistency
+            -> Thread-Safe/Synchronized Collections (SynchronizedList, SynchronizedSet, SynchronizedMap) Performance wise not up to the mark
+            -> ConcurrentModificationException => While one thread iterating a collection and if another thread tries to
+                update the collection then "ConcurrentModificationException" occurs
+
+                To avoid above issues, Concurrent Collections were introduced
+Concurrent Collections:
+            -> ConcurrentHashMap
+            -> CopyOnWriteArrayList
+            -> CopyOnWriteArraySet
+
+Diff b/w HashMap, HashTable, ConcurrentHashMap
+1) HashMap is non-synchronized/not thread-safe
+        a) Multiple Threads can access the HashMap
+        b) D.S. HashTable
+2) HashTable is synchronized, at a time only one thread is allowed to access it
+
+3) ConcurrentHashMap is synchronized but internally uses concept called "segment locking/bucket level locking"
+     suppose if the ConcurrentHashMap is of size 16, (Size is referred as Concurrency Level)
+        1) 16 buckets will be created
+        2) Each segment will have segment lock/bucket level
+        3) Thread requires this bucket level lock to perform update operations
+        4) total 16 bucket level locks, it means at a time 16 threads can access 16 buckets
+        5) for read operation, lock is not required i.e. multiple threads can access(read operation) data
+        based on above, we can say "ConcurrentHashMap" is performance wise better when compared with "HashTable"
+
+HashMap vs ConcurrentHashMap
+        HashMap:
+        1) Non-Synchronized
+        2) Multiple threads can access at a time
+        3) Throws ConcurrentModificationException if another thread tries to perform modifications while iterating the
+           HashMap. i.e. iterator is Fail-Fast
+
+        ConcurrentHashMap:
+        1) Synchronized
+        2) Sometimes Threads required to wait to operate on ConcurrentHashMap
+        3) While one thread operating, remaining threads are allowed to perform read and write operations without any issues
+        3) Wont throw ConcurrentModificationException if another thread tries to perform modifications while iterating the
+           ConcurrentHashMap. i.e. iterator is Fail-Safe
+
