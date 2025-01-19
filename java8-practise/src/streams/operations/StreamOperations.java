@@ -48,6 +48,49 @@ public class StreamOperations {
         next();
 
         sortByDateDesc();
+        next();
+
+        findSumInteger();
+        next();
+
+        findSumDouble();
+    }
+
+    private static void findSumInteger() {
+        List<Employee> employees = StreamsUtil.getEmployees();
+        Integer sumWay1 = employees.stream()
+                .map(Employee::getId)
+                .reduce(0, Integer::sum);
+        System.out.println(sumWay1);
+
+        int sumWay2 = employees.stream()
+                .mapToInt(Employee::getId)
+                .sum();
+        System.out.println(sumWay2);
+
+        OptionalDouble average = employees.stream()
+                .mapToInt(Employee::getId)
+                .average();
+        System.out.println(average.getAsDouble());
+    }
+
+    private static void findSumDouble() {
+        List<Employee> employees = StreamsUtil.getEmployees();
+        Double sumWay1 = employees.stream()
+                .map(Employee::getSalary)
+                .reduce((double) 0, Double::sum);
+        System.out.println(sumWay1);
+
+        double sumWay2 = employees.stream()
+                .mapToDouble(Employee::getSalary)
+                .sum();
+        System.out.println(sumWay2);
+
+        OptionalDouble average = employees.stream()
+                .mapToDouble(Employee::getSalary)
+                .average();
+        System.out.println(average.getAsDouble());
+
     }
 
     private static void sortByDateDesc() {

@@ -1,4 +1,4 @@
-package streams.operations.map_operations;
+package streams.operations.list_set_map_operations;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -11,8 +11,8 @@ public class MapSort {
         Map<String, Integer> unsortedMap = new HashMap<>();
         unsortedMap.put("za", 10);
         unsortedMap.put("zb", 5);
-        unsortedMap.put("a", 6);
-        unsortedMap.put("c", 20);
+        unsortedMap.put("a", 26);
+        unsortedMap.put("a", 20);
         unsortedMap.put("d", 1);
         unsortedMap.put("e", 7);
         unsortedMap.put("y", 8);

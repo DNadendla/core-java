@@ -14,9 +14,10 @@ public class Employee {
     private List<Role> roles;
     private Date joinDate;
     private Date dateOfBirth;
+    private Double salary;
 
     // Constructor
-    public Employee(int id, String name, int age, City city, String gender, List<Role> roles, Date joinDate, Date dateOfBirth) {
+    public Employee(int id, String name, int age, City city, String gender, List<Role> roles, Date joinDate, Date dateOfBirth, Double salary) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -25,6 +26,7 @@ public class Employee {
         this.roles = roles;
         this.joinDate = joinDate;
         this.dateOfBirth = dateOfBirth;
+        this.salary = salary;
     }
 
     // Getters and Setters
@@ -92,6 +94,14 @@ public class Employee {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -103,6 +113,7 @@ public class Employee {
                 ", roles=" + roles +
                 ", joinDate=" + joinDate +
                 ", dateOfBirth=" + dateOfBirth +
+                ", salary=" + salary +
                 '}';
     }
 }
