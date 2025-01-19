@@ -42,8 +42,27 @@ public class StreamOperations {
         next();
 
         groupingByAndFilterAndSort();
+        next();
 
+        sortByDate();
+        next();
 
+        sortByDateDesc();
+    }
+
+    private static void sortByDateDesc() {
+        List<Employee> employees = StreamsUtil.getEmployees();
+        employees.stream()
+                .sorted(Comparator.comparing(Employee:: getDateOfBirth, Comparator.reverseOrder()))
+                .forEach(employee -> System.out.println(employee.getDateOfBirth()));
+    }
+
+    private static void sortByDate() {
+        List<Employee> employees = StreamsUtil.getEmployees();
+        employees.stream()
+                .sorted(Comparator.comparing(Employee::getDateOfBirth))
+                .collect(Collectors.toList())
+                .forEach(employee -> System.out.println(employee.getDateOfBirth()));
     }
 
     private static void groupingByAndFilterAndSort() {
