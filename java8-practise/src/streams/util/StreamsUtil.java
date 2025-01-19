@@ -31,7 +31,7 @@ public class StreamsUtil {
 
         // Create employees
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee(1, "Alice", 30, mumbai, "Female", Arrays.asList(developer, tester)));
+        employees.add(new Employee(1, "Alice", 30, pune, "Female", Arrays.asList(developer, tester)));
         employees.add(new Employee(2, "Bob", 25, pune, "Male"));
         employees.add(new Employee(3, "Charlie", 28, bangalore, "Male", Arrays.asList(manager)));
         employees.add(new Employee(4, "Diana", 32, losAngeles, "Female"));

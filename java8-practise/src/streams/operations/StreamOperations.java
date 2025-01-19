@@ -1,36 +1,108 @@
 package streams.operations;
 
 import streams.model.Employee;
-import streams.model.Role;
 import streams.util.StreamsUtil;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StreamOperations {
     public static void main(String[] args) {
         iterate();
-        System.out.println("================================================================================================================================================");
+        next();
 
         filter();
-        System.out.println("================================================================================================================================================");
+        next();
 
         map();
-        System.out.println("================================================================================================================================================");
+        next();
 
         flatMap();
-        System.out.println("================================================================================================================================================");
+        next();
 
         groupingBy();
-        System.out.println("================================================================================================================================================");
+        next();
 
-        ParitionBy();
-        System.out.println("================================================================================================================================================");
+        partitioningBy();
+        next();
 
         filterAndGroupingBy();
+        next();
 
+        sortList();
+        next();
+
+        sortListDesc();
+        next();
+
+        groupingByAndSort();
+        next();
+
+        groupingByAndSortDesc();
+        next();
+
+        groupingByAndFilterAndSort();
+
+
+    }
+
+    private static void groupingByAndFilterAndSort() {
+        List<Employee> employees = StreamsUtil.getEmployees();
+        Map<String, List<Employee>> empsByCity = employees.stream()
+                .collect(Collectors.groupingBy(employee -> employee.getCity().getCode()));
+        LinkedHashMap<String, List<Employee>> empsByCityFiltered = empsByCity.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue().size() > 4)
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (oldV, newV) -> oldV, LinkedHashMap::new));
+
+        empsByCityFiltered.forEach((city, emps) -> System.out.println(city + " - " + emps.size()));
+    }
+
+    private static void groupingByAndSortDesc() {
+        List<Employee> employees = StreamsUtil.getEmployees();
+        LinkedHashMap<Integer, List<Employee>> groupingEmpsByAgeAndSortDesc = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getAge))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (oldV, newV) -> oldV, LinkedHashMap::new));
+
+        groupingEmpsByAgeAndSortDesc.forEach((age, emps) -> System.out.println(age + " - " + emps.size()));
+    }
+
+    private static void groupingByAndSort() {
+        List<Employee> employees = StreamsUtil.getEmployees();
+        LinkedHashMap<Integer, List<Employee>> empGroupedByAndSort = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getAge))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (oldV, newV) -> oldV, LinkedHashMap::new));
+
+        empGroupedByAndSort.forEach((age, emps) -> System.out.println(age + " - " + emps.size()));
+
+
+    }
+
+    private static void sortListDesc() {
+        List<Employee> employees = StreamsUtil.getEmployees();
+        employees.stream()
+                .sorted(Comparator.comparing(Employee::getAge, Comparator.reverseOrder()))
+                .forEach(employee -> System.out.println(employee.getName() + " - " + employee.getAge()));
+    }
+
+    private static void sortList() {
+        List<Employee> employees = StreamsUtil.getEmployees();
+        employees.stream()
+                .sorted(Comparator.comparing(Employee::getAge))
+                .collect(Collectors.toList())
+                .forEach(employee -> {
+                    System.out.println(employee.getAge());
+                });
     }
 
     private static void filterAndGroupingBy() {
@@ -38,11 +110,11 @@ public class StreamOperations {
         Map<String, List<Employee>> empLT30ByCity = employees.stream().filter(employee -> employee.getAge() < 30)
                 .collect(Collectors.groupingBy(employee -> employee.getCity().getName()));
         empLT30ByCity.forEach((city, empLT30City) -> {
-            System.out.println(city +" - "+ empLT30City.size());
+            System.out.println(city + " - " + empLT30City.size());
         });
     }
 
-    private static void ParitionBy() {
+    private static void partitioningBy() {
         List<Employee> employees = StreamsUtil.getEmployees();
         Map<Boolean, List<Employee>> employeesAgeGT30 = employees.stream()
                 .collect(Collectors.partitioningBy(employee -> employee.getAge() >= 30));
@@ -54,9 +126,9 @@ public class StreamOperations {
     private static void groupingBy() {
         List<Employee> employees = StreamsUtil.getEmployees();
         Map<String, List<Employee>> employeesByCity = employees.stream()
-                                                    .collect(Collectors.groupingBy(employee -> employee.getCity().getCode()));
+                .collect(Collectors.groupingBy(employee -> employee.getCity().getCode()));
         employeesByCity.forEach((cityCode, employeesInCity) -> {
-            System.out.println("City Code: "+ cityCode + ", Emp Count: "+ employeesInCity.size());
+            System.out.println("City Code: " + cityCode + ", Emp Count: " + employeesInCity.size());
         });
     }
 
@@ -89,4 +161,9 @@ public class StreamOperations {
             System.out.println(employee);
         });
     }
+
+    private static void next() {
+        System.out.println("================================================================================================================================================");
+    }
+
 }
