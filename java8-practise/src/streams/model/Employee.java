@@ -2,7 +2,6 @@ package streams.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,16 +25,6 @@ public class Employee {
         this.roles = roles;
         this.joinDate = joinDate;
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public static Date parseDate(String date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            return sdf.parse(date);
-        } catch (ParseException e) {
-            System.out.println("Invalid date, reason: " + e.getMessage());
-            return null;
-        }
     }
 
     // Getters and Setters
