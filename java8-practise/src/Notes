@@ -1,0 +1,52 @@
+Java - 8 features
+1. Functional interface
+2. Lambdas
+3. Predefined functional interfaces
+4. Runnable, Predicate, Consumer, Supplier, Function
+5. BiPredicate, BiConsumer, BiFunction
+6. Stream Operations -> Intermediate, Terminal
+7. Intermediate -> map, filter, flatMap, sort..
+8. Terminal -> collect, count, anyMatch, reduce..
+9. map vs flatMap
+10. find sum in 2 ways -> reduce and mapToInt/mapToDouble
+11. sort a List/Set - ASC & DESC
+12. sort a Map - ASC & DESC
+13. sort a List/Set based on a field of Custom Object - ASC & DESC
+14. sort a Map based on a field of Custom object based Key - ASC & DESC
+15. sort a list/set based on date field
+16. default and static methods
+default Methods:
+    1. Default methods enable interfaces to have methods with concrete implementations.
+    2. This feature allows the addition of new methods to interfaces without forcing all
+    implementing classes to provide an implementation.
+static methods:
+    1. Static methods in interfaces belong to the interface itself and
+        cannot be overridden by implementing classes.
+    2. They are useful for providing utility methods related to the interface.
+
+Key Differences Between Default and Static Methods:
+    A. Overriding:
+        * Default methods can be overridden by implementing classes.
+        * Static methods cannot be overridden; they belong solely to the interface.
+
+    B. Invocation:
+        * Default methods are invoked on instances of implementing classes.
+        * Static methods are called using the interface name.
+
+    C. Purpose:
+    * Default methods allow interfaces to evolve by adding new methods without breaking existing implementations.
+    * Static methods provide utility functions pertinent to the interface.
+
+17. SORTING a LIST/SET vs SORTING a MAP
+ASC:
+    sorted()
+    sorted(Comparator.comparing(Emp :: getId))
+    sorted(Map.Entry.comparingByKey())
+    sorted(Map.Entry.comparingByKey(Comparator.comparing(Student::getId)))
+
+DESC:
+    sorted(Comparator.reverseOrder())
+    sorted(Comparator.comparing(Emp :: getId, Comparator.reversingOrder()))
+    sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
+    sorted(Map.Entry.comparingByKey(Comparator.comparing(Student::getId, Comparator.reverseOrder())))
+
