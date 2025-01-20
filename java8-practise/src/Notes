@@ -6,7 +6,8 @@ Java - 8 features
 5. BiPredicate, BiConsumer, BiFunction
 6. Stream Operations -> Intermediate, Terminal
 7. Intermediate -> map, filter, flatMap, sort..
-8. Terminal -> collect, count, anyMatch, reduce..
+8. Terminal (Terminal operations are the final operations performed on a stream)
+            -> collect, count, anyMatch, reduce..
 9. map vs flatMap
 10. find sum in 2 ways -> reduce and mapToInt/mapToDouble
 11. sort a List/Set - ASC & DESC
@@ -34,8 +35,8 @@ Key Differences Between Default and Static Methods:
         * Static methods are called using the interface name.
 
     C. Purpose:
-    * Default methods allow interfaces to evolve by adding new methods without breaking existing implementations.
-    * Static methods provide utility functions pertinent to the interface.
+        * Default methods allow interfaces to evolve by adding new methods without breaking existing implementations.
+        * Static methods provide utility functions pertinent to the interface.
 
 17. SORTING a LIST/SET vs SORTING a MAP
 ASC:

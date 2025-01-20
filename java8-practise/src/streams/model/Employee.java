@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Employee {
     private int id;
+    private String department;
     private String name;
     private int age;
     private City city;
@@ -17,8 +18,9 @@ public class Employee {
     private Double salary;
 
     // Constructor
-    public Employee(int id, String name, int age, City city, String gender, List<Role> roles, Date joinDate, Date dateOfBirth, Double salary) {
+    public Employee(int id, String name, String department, int age, City city, String gender, List<Role> roles, Date joinDate, Date dateOfBirth, Double salary) {
         this.id = id;
+        this.department = department;
         this.name = name;
         this.age = age;
         this.city = city;
@@ -102,10 +104,19 @@ public class Employee {
         this.salary = salary;
     }
 
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
+                ", department='" + department + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", city=" + city +

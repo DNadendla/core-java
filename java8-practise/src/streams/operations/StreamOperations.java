@@ -135,6 +135,16 @@ public class StreamOperations {
         groupingEmpsByAgeAndSortDesc.forEach((age, emps) -> System.out.println(age + " - " + emps.size()));
     }
 
+    /**
+     * keyMapper → Map.Entry::getKey
+     * Uses the key (age) from each Map.Entry<Integer, List<Employee>>
+     * valueMapper → Map.Entry::getValue
+     * Uses the value (List<Employee>) from each Map.Entry<Integer, List<Employee>>
+     * mergeFunction → (oldV, newV) -> oldV
+     * If there are duplicate keys (not possible in this case), it keeps the existing value (oldV).
+     * mapSupplier → LinkedHashMap::new
+     * Specifies that we want a LinkedHashMap to maintain insertion order.
+     */
     private static void groupingByAndSort() {
         List<Employee> employees = StreamsUtil.getEmployees();
         LinkedHashMap<Integer, List<Employee>> empGroupedByAndSort = employees.stream()
@@ -146,8 +156,6 @@ public class StreamOperations {
                         (oldV, newV) -> oldV, LinkedHashMap::new));
 
         empGroupedByAndSort.forEach((age, emps) -> System.out.println(age + " - " + emps.size()));
-
-
     }
 
     private static void sortListDesc() {
