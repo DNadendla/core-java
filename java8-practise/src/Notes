@@ -34,8 +34,8 @@ Key Differences Between Default and Static Methods:
         * Static methods are called using the interface name.
 
     C. Purpose:
-    * Default methods allow interfaces to evolve by adding new methods without breaking existing implementations.
-    * Static methods provide utility functions pertinent to the interface.
+        * Default methods allow interfaces to evolve by adding new methods without breaking existing implementations.
+        * Static methods provide utility functions pertinent to the interface.
 
 17. SORTING a LIST/SET vs SORTING a MAP
 ASC:
