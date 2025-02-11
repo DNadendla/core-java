@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Ex1_DepartmentWiseEmpCount {
-    public static void main(String[] args) {
+    public static void main(String[] ags) {
         List<Employee> employees = StreamsUtil.getEmployees();
         Map<String, Long> empCountByDept = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
