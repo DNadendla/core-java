@@ -5,7 +5,10 @@ Java - 8 features
 4. Runnable, Predicate, Consumer, Supplier, Function
 5. BiPredicate, BiConsumer, BiFunction
 6. Stream Operations -> Intermediate, Terminal
-7. Intermediate -> map, filter, flatMap, sort..
+7. Intermediate ->
+    * Operations that transform a stream into another stream
+    * They are lazy, meaning they don’t process the elements until a terminal operation is called.
+    map, filter, flatMap, sort..
 8. Terminal (Terminal operations are the final operations performed on a stream)
             -> collect, count, anyMatch, reduce..
 9. map vs flatMap
@@ -50,4 +53,24 @@ DESC:
     sorted(Comparator.comparing(Emp :: getId, Comparator.reversingOrder()))
     sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
     sorted(Map.Entry.comparingByKey(Comparator.comparing(Student::getId, Comparator.reverseOrder())))
+
+17. @FunctionalInterface w.r.to Inheritance
+    * @FunctionalInterface + interface having 1 SAM - Valid
+
+    * @FunctionalInterface + ChildInterface (No ABS Methods)
+        extends
+      @FunctionalInterface ParentInterface (1 SAM)  - Valid
+
+    * @FunctionalInterface ChildInterface (Same SAM as ParentInterface)
+        extends
+      @FunctionalInterface ParentInterface (1 SAM) - Valid
+
+    * @FunctionalInterface ChildInterface (new SAM)
+              extends
+      @FunctionalInterface ParentInterface (1 SAM) - INValid and CE
+
+    * ChildInterface (new SAM)
+                  extends
+      @FunctionalInterface ParentInterface (1 SAM) - Valid
+
 
