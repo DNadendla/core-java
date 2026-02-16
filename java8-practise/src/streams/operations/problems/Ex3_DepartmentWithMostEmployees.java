@@ -19,18 +19,22 @@ public class Ex3_DepartmentWithMostEmployees {
         List<Employee> employees = StreamsUtil.getEmployees();
         Map<String, Long> empByDept = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
+       
         Map.Entry<String, Long> deptWithMostEmps = empByDept.entrySet()
                 .stream()
                 .max(Map.Entry.comparingByValue())
                 .get();
+        
         System.out.println(deptWithMostEmps.getKey() + " " + deptWithMostEmps.getValue());
     }
 
     private static void approach1() {
         List<Employee> employees = StreamsUtil.getEmployees();
+        
         Map<String, Long> empCountByDept = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment,
                         Collectors.counting()));
+        
         LinkedHashMap<String, Long> sortedData = empCountByDept.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
@@ -41,6 +45,7 @@ public class Ex3_DepartmentWithMostEmployees {
 
         String key = sortedData.entrySet().stream().findFirst().get().getKey();
         Long value = sortedData.entrySet().stream().findFirst().get().getValue();
+        
         System.out.println(key + " " +value);
     }
 }

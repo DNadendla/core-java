@@ -15,7 +15,7 @@ public class Ex4_DepartmentsWithMoreThanThreeEmployees {
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()))
                 .entrySet()
                 .stream()
-                .filter(entry -> entry.getValue() > 6)
+                .filter(entry -> entry.getValue() > 3)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
         System.out.println(deptWithMoreThan);

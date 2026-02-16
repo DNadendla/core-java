@@ -1,9 +1,6 @@
 package streams.operations.list_set_map_operations;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MapSort {
@@ -83,6 +80,11 @@ public class MapSort {
     }
 
     private static void sortByKey(Map<String, Integer> unsortedMap) {
+        Map<String, Integer> sorted = new TreeMap<>(unsortedMap);
+        sorted.forEach((name, age) -> {
+            System.out.println(name + " " + age);
+        });
+
         LinkedHashMap<String, Integer> sortedByKeys = unsortedMap.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByKey())
@@ -92,5 +94,7 @@ public class MapSort {
         sortedByKeys.forEach((name, age) -> {
             System.out.println(name + " " + age);
         });
+
+        System.out.println(sorted.equals(sortedByKeys));
     }
 }

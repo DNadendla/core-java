@@ -9,10 +9,22 @@ import java.util.stream.Collectors;
 
 public class Ex1_DepartmentWiseEmpCount {
     public static void main(String[] ags) {
-        List<Employee> employees = StreamsUtil.getEmployees();
+        /*List<Employee> employees = StreamsUtil.getEmployees();
         Map<String, Long> empCountByDept = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
-        empCountByDept.forEach((dept, count) -> System.out.println(dept + " - " + count));
+        empCountByDept.forEach((dept, count) -> System.out.println(dept + " - " + count));*/
+    	
+    	List<Employee> employees = StreamsUtil.getEmployees();
+    	Map<String, Long> empByDept = employees.stream()
+    	.collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()))
+    	.entrySet()
+    	.stream()
+    	.filter(entry -> entry.getValue() >= 6)
+    	.collect(Collectors.toMap(
+    			Map.Entry::getKey,
+    			Map.Entry::getValue));
+    	empByDept.entrySet()
+    	.forEach(entry -> System.out.println(entry));
     }
 }
 

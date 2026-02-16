@@ -204,9 +204,9 @@ public class StreamOperations {
 
     private static void flatMap() {
         List<Employee> employees = StreamsUtil.getEmployees();
-        Set<String> roleCodes = employees.stream().map(employee -> employee.getRoles())
-                .flatMap(role -> role.stream())
-                .map(roleCode -> roleCode.getCode())
+        Set<String> roleCodes = employees.stream()
+                .flatMap(employee -> employee.getRoles().stream())
+                .map(role -> role.getCode())
                 .collect(Collectors.toSet());
         roleCodes.forEach(System.out::println);
     }

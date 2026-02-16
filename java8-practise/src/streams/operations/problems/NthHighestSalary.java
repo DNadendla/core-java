@@ -34,16 +34,21 @@ public class NthHighestSalary {
 
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
-                new Employee("John", 50000),
-                new Employee("Jane", 60000),
-                new Employee("Alex", 70000),
-                new Employee("Emma", 80000),
-                new Employee("Doe", 90000),
-                new Employee("Smith", 80000), // Same salary as Emma
-                new Employee("Chris", 70000)  // Same salary as Alex
+                new Employee("John", 50000.0),
+                new Employee("Jane", 60000.0),
+                new Employee("Alex", 70000.0),
+                new Employee("Emma", 80000.0),
+                new Employee("Doe", 90000.0),
+                new Employee("Smith", 80000.0), // Same salary as Emma
+                new Employee("Chris", 70000.0)  // Same salary as Alex
         );
+        
+        employees.stream()
+        			.sorted(Comparator.comparing(Employee :: getName, Comparator.reverseOrder()))
+        			.collect(Collectors.toList())
+        			.forEach(employee -> System.out.println(employee));
 
-        int n = 3; // Change this to find other N-th highest salaries
+        /*int n = 3; // Change this to find other N-th highest salaries
 
         List<Double> salaries = employees.stream()
                 .map(Employee::getSalary)
@@ -61,7 +66,7 @@ public class NthHighestSalary {
             System.out.println(nthHighestEmployees);
         } else {
             System.out.println("Invalid Range: " + n);
-        }
+        }*/
 
     }
 }

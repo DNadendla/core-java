@@ -13,7 +13,7 @@ public class Main {
         studentMap.put(new Student(1, "Bob", 22), 90);
         studentMap.put(new Student(2, "Charlie", 21), 88);
 
-        studentMap.forEach((student, score) -> System.out.println(student + " " + score));
+        /*studentMap.forEach((student, score) -> System.out.println(student + " " + score));
 
         Map<Student, Integer> sortedMap = studentMap.entrySet()
                 .stream()
@@ -27,7 +27,25 @@ public class Main {
                 ));
         System.out.println("----------");
 
-        sortedMap.forEach((student, score) -> System.out.println(student + " " + score));
+        sortedMap.forEach((student, score) -> System.out.println(student + " " + score));*/
+        
+        studentMap.entrySet()
+        .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
+        
+        
+        System.out.println("---------------------------");
+        LinkedHashMap<Student, Integer> sortedMap = studentMap.entrySet()
+        .stream()
+        .sorted(Map.Entry.comparingByKey(Comparator.comparing(Student :: getName)))
+        .collect(Collectors.toMap(
+        		Map.Entry::getKey,
+        		Map.Entry::getValue,
+        		(o1, o2) -> o1,
+        		LinkedHashMap :: new
+        		));
+        
+        sortedMap.entrySet().forEach(entry -> System.out.println(entry.getKey()));
 
+        
     }
 }

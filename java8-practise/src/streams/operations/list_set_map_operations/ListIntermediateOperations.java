@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ListIntermediateOperations {
     public static void main(String[] args) {
@@ -18,8 +17,10 @@ public class ListIntermediateOperations {
     }
 
     private static void distinctList(List<Integer> data) {
-        Stream<Integer> distincted = data.stream().distinct();
-        System.out.println(distincted);
+        List<Integer> distinct = data.stream()
+                                         .distinct()
+                                         .collect(Collectors.toList());
+        System.out.println(distinct);
     }
 
     private static void sortDesc(List<Integer> data) {
@@ -31,8 +32,8 @@ public class ListIntermediateOperations {
 
     private static void sort(List<Integer> data) {
         List<Integer> sorted = data.stream()
-                .sorted()
-                .collect(Collectors.toList());
+                                    .sorted()
+                                    .collect(Collectors.toList());
         System.out.println(sorted);
     }
 
